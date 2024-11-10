@@ -8,7 +8,6 @@ packages:
   - stow
   - unzip
   - kubectl
-  - fzf
   - cmake
   - curl
   - dos2unix 
@@ -28,17 +27,20 @@ repositories:
     repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
 
 tasks:
-  - name: debian
+  - name: setup
     command: |
       curl -sSf https://sh.rustup.rs | sh -s -- -y
       /home/user/.cargo/bin/cargo install starship --locked
+      /home/user/.cargo/bin/cargo install lsd
+      git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+      ~/.fzf/install --all
     when: on-create
 
   - name: run stow
     command: |
       cd /home/user/dotfiles && stow . --adopt && git reset --hard
-    when: on-create,on-update
+    when: on-create,on-restart
 
-  - name: Set env variable for the devpod
+  - name: set env variable for the devpod
     command: echo devpod > ~/.machine
-    when: on-create,on-update
+    when: on-create,on-restart
