@@ -16,6 +16,8 @@ source $ZSH_FOLDER/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # https://github.com/wting/autojump
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+[ -f /usr/share/autojump/autojump.sh ] && . /usr/share/autojump/autojump.sh
+
 
 # # kubernetes autosuggest
 if [ -f /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
