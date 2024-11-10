@@ -1,0 +1,44 @@
+---
+schema_version: 0
+flavor: go
+region: netherlands
+shell: zsh
+
+packages:
+  - stow
+  - unzip
+  - kubectl
+  - fzf
+  - cmake
+  - curl
+  - dos2unix 
+
+repositories:
+  - dest: /home/user/dotfiles
+    repo: https://github.com/vladlyt/dotfiles.git
+    update: true
+  
+  - dest: /home/user/.zsh/zsh-autosuggestions
+    repo: https://github.com/zsh-users/zsh-autosuggestions
+
+  - dest: /home/user/.zsh/fzf-tab
+    repo: https://github.com/Aloxaf/fzf-tab
+
+  - dest: /home/user/.zsh/zsh-syntax-highlighting
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+
+tasks:
+  - name: debian
+    command: |
+      curl -sSf https://sh.rustup.rs | sh -s -- -y
+      /home/user/.cargo/bin/cargo install starship --locked
+    when: on-create
+
+  - name: run stow
+    command: |
+      cd /home/user/dotfiles && stow . --adopt && git reset --hard
+    when: on-create,on-update
+
+  - name: Set env variable for the devpod
+    command: echo devpod > ~/.machine
+    when: on-create,on-update

@@ -18,7 +18,6 @@ source $ZSH_FOLDER/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 [ -f /usr/share/autojump/autojump.sh ] && . /usr/share/autojump/autojump.sh
 
-
 # # kubernetes autosuggest
 if [ -f /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
@@ -38,8 +37,6 @@ source $ZSH_FOLDER/functions.zsh
 source $ZSH_FOLDER/python.zsh
 source $ZSH_FOLDER/starship.zsh
 source $ZSH_FOLDER/aliases.zsh
-
-export CURRENT_MACHINE=local
 
 # setup colors of prompt
 if [ "$CURRENT_MACHINE" = "prod" ]; then

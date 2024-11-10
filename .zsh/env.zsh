@@ -13,3 +13,10 @@ export FZF_DEFAULT_OPTS='--height 20% --border' # decorates fzf search window wi
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export HOMEBREW_NO_ENV_HINTS=1
+
+
+if [[ -f ~/.machine ]]; then
+    export CURRENT_MACHINE=$(<~/.machine)
+else
+    export CURRENT_MACHINE="local"
+fi
