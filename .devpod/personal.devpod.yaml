@@ -8,9 +8,11 @@ packages:
   - stow
   - unzip
   - kubectl
+  - fzf
   - cmake
   - curl
-  - dos2unix 
+  - dos2unix
+  - bc
 
 repositories:
   - dest: /home/user/dotfiles
@@ -32,8 +34,7 @@ tasks:
       curl -sSf https://sh.rustup.rs | sh -s -- -y
       /home/user/.cargo/bin/cargo install starship --locked
       /home/user/.cargo/bin/cargo install lsd
-      git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-      ~/.fzf/install --all
+      mkdir -p ~/.fzf && curl -L -o ~/.fzf/fzf-0.24.4.tar.gz https://github.com/junegunn/fzf/archive/refs/tags/0.24.4.tar.gz && tar -xzf ~/.fzf/fzf-0.24.4.tar.gz -C ~/.fzf --strip-components=1 && rm ~/.fzf/fzf-0.24.4.tar.gz
     when: on-create
 
   - name: run stow
