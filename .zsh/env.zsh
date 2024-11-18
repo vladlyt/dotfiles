@@ -14,6 +14,9 @@ export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export HOMEBREW_NO_ENV_HINTS=1
 
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
 
 if [[ -f ~/.machine ]]; then
     export CURRENT_MACHINE=$(<~/.machine)
