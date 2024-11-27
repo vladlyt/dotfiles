@@ -10,8 +10,8 @@ autoload -U compinit && compinit -u
 bindkey '^[[3~'   delete-char         # enables DEL key proper behaviour
 bindkey '^[[1;5C' forward-word        # [Ctrl-RightArrow] - move forward one word
 bindkey '^[[1;5D' backward-word       # [Ctrl-LeftArrow] - move backward one word
-bindkey  "^[[H"   beginning-of-line   # [Home] - goes at the begining of the line
-bindkey  "^[[F"   end-of-line         # [End] - goes at the end of the line
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
 
 # Enables history saving
 HISTFILE=~/.zsh_history
