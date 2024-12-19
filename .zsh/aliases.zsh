@@ -14,4 +14,31 @@ alias dp='ssh $USER.devpod-nld; tc $DEFAULT_COLOR'
 alias minimal='export STARSHIP_CONFIG="$HOME/.config/starship-minimal.toml"'
 alias normal='export STARSHIP_CONFIG="$HOME/.config/starship-$CURRENT_MACHINE.toml"'
 
-alias ad="arc diff HEAD^"
+alias adh="arc diff"
+alias adh="arc diff HEAD^"
+alias ac="arc cascade -hc"
+alias af="arc flow"
+
+typeset -A git_aliases
+git_aliases=(
+    s   "status"
+    co  "checkout"
+    br  "branch"
+    ci  "commit"
+    cm  "commit -m"
+    lg  "log --oneline --graph --decorate --all"
+    df  "diff"
+    dc  "diff --cached"
+    mg  "merge"
+    rb  "rebase"
+    pl  "pull"
+    psh "push"
+    fa  "fetch --all --prune"
+)
+
+# Doing it as different environments might have different configurations for git
+# and I don't wanna override ~/.gitconfig
+# it might slow down startup time a bit, but whatever
+for alias in "${(@k)git_aliases}"; do
+    git config --global alias."$alias" "${git_aliases[$alias]}"
+done
