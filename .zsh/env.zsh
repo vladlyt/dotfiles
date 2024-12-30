@@ -14,12 +14,17 @@ export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export HOMEBREW_NO_ENV_HINTS=1
 
-export VISUAL=vim
-export EDITOR="$VISUAL"
 
 
 if [[ -f ~/.machine ]]; then
     export CURRENT_MACHINE=$(<~/.machine)
 else
     export CURRENT_MACHINE="local"
+fi
+
+# TODO can we install it on the devpod so it would open locally somehow
+if [ "$CURRENT_MACHINE" = "local" ]; then
+    export EDITOR="zed --wait"
+else
+    export EDITOR="vim"
 fi
