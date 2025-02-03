@@ -13,12 +13,13 @@ packages:
   - curl
   - dos2unix
   - bc
+  - clang-format
 
 repositories:
   - dest: /home/user/dotfiles
     repo: https://github.com/vladlyt/dotfiles.git
     update: true
-  
+
   - dest: /home/user/.zsh/zsh-autosuggestions
     repo: https://github.com/zsh-users/zsh-autosuggestions
 
