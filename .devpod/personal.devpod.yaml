@@ -14,6 +14,7 @@ packages:
   - dos2unix
   - bc
   - clang-format
+  - bat
 
 repositories:
   - dest: /home/user/dotfiles
