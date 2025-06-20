@@ -52,12 +52,12 @@ claude_setup() {
   export CLOUD_ML_REGION="us-east5";
 }
 
-claude() {
-  claude_setup;
-  echo "claude_setup() complete. Unsetting the function to allow original 'claude' to run directly."
-  unset -f claude
+# claude() {
+#   claude_setup;
+#   echo "claude_setup() complete. Unsetting the function to allow original 'claude' to run directly."
+#   unset -f claude
 
-  # Now, call the original claude.
-  # Since the function is unset, the shell will find the executable in PATH.
-  claude "$@"
-}
+#   # Now, call the original claude.
+#   # Since the function is unset, the shell will find the executable in PATH.
+#   claude "$@"
+# }
