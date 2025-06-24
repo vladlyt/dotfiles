@@ -3,6 +3,7 @@ path=(
     $path[@]
 )
 
+path+=~/.local/bin
 
 # to fix locales in perl
 export LANG=en_US.UTF-8
