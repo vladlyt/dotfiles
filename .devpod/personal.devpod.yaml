@@ -47,3 +47,7 @@ tasks:
   - name: set env variable for the devpod
     command: echo devpod > ~/.machine
     when: on-create,on-restart
+
+  - name: install claude-code
+    command: npm install -g @anthropic-ai/claude-code
+    when: on-create,on-restart
