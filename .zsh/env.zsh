@@ -26,6 +26,10 @@ else
     export CURRENT_MACHINE="local"
 fi
 
+if [[ -f ~/.machine-type ]]; then
+    export USER_MACHINE_PREFIX="$(<~/.machine-type)"
+fi
+
 # TODO can we install it on the devpod so it would open locally somehow
 if [ "$CURRENT_MACHINE" = "local" ]; then
     export EDITOR="zed --wait"

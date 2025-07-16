@@ -46,7 +46,7 @@ tasks:
     when: on-create,on-restart
 
   - name: set env variable for the devpod
-    command: echo devpod > ~/.machine
+    command: echo devpod > ~/.machine && echo "default" > ~/.machine-type
     when: on-create,on-restart
 
   - name: install claude-code

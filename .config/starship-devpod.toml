@@ -38,6 +38,12 @@ format = '[$env_value ]($style)'
 variable = "STARSHIP_DISTRO"
 disabled = false
 
+# Shows an icon that should be included by zshrc script based on the user machine prefix
+[env_var.USER_MACHINE_PREFIX]
+style = "bg:#33D7FF"
+format = '[\[$env_value\] ]($style)'
+variable = "USER_MACHINE_PREFIX"
+disabled = false
 
 # You can also replace your username with a neat symbol like  to save some space
 [username]
