@@ -15,6 +15,7 @@ packages:
   - bc
   - clang-format
   - bat
+  - object-config-tools
 
 repositories:
   - dest: /home/user/dotfiles
