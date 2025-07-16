@@ -12,6 +12,8 @@ alias fp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}
 alias dp='ssh $USER.devpod-nld; tc $DEFAULT_COLOR'
 alias dpenvoy='ssh ltv-envoy-devpod.devpod-nld; tc $DEFAULT_COLOR'
 
+alias oc='object-config-client'
+
 alias minimal='export STARSHIP_CONFIG="$HOME/.config/starship-minimal.toml"'
 alias normal='export STARSHIP_CONFIG="$HOME/.config/starship-$CURRENT_MACHINE.toml"'
 
