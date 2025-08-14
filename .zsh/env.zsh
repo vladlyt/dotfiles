@@ -31,8 +31,10 @@ if [[ -f ~/.machine-type ]]; then
 fi
 
 # TODO can we install it on the devpod so it would open locally somehow
-if [ "$CURRENT_MACHINE" = "local" ]; then
-    export EDITOR="zed --wait"
-else
-    export EDITOR="vim"
-fi
+# if [ "$CURRENT_MACHINE" = "local" ]; then
+    # export EDITOR="zed --wait"
+# else
+    # export EDITOR="vim"
+# fi
+
+export EDITOR="vim"
