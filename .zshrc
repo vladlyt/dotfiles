@@ -64,3 +64,8 @@ tc $DEFAULT_COLOR  # set iterm color
 
 # https://github.com/starship/starship
 eval "$(starship init zsh)"
+
+
+if [ "$USER_MACHINE_PREFIX" = "envoy" ]; then
+    export LLVM_CONFIG=/usr/local/llvm-my14/bin/llvm-config
+fi

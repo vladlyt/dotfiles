@@ -16,6 +16,7 @@ packages:
   - clang-format
   - bat
   - object-config-tools
+  - uber-aifx
 
 repositories:
   - dest: /home/user/dotfiles
@@ -49,6 +50,10 @@ tasks:
     command: echo devpod > ~/.machine && echo "default" > ~/.machine-type
     when: on-create,on-restart
 
-  - name: install claude-code
-    command: npm install -g @anthropic-ai/claude-code
+  - name: Install Claude
+    command: |
+      sudo chown -R $(id -u):$(id -g) ~/.npm
+      sudo chown $(id -u):$(id -g) ~/.npmrc
+      npm config fix
+      aifx agent install claude
     when: on-create,on-restart
