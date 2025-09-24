@@ -68,4 +68,5 @@ eval "$(starship init zsh)"
 
 if [ "$USER_MACHINE_PREFIX" = "envoy" ]; then
     export LLVM_CONFIG=/usr/local/llvm-my14/bin/llvm-config
+    export PATH="/usr/local/llvm-my14/bin:$PATH"
 fi
