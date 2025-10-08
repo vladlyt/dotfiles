@@ -10,7 +10,4 @@ if [ -f "$HOME/.pyenv/bin/pyenv" ] && ! type -P pyenv &>/dev/null ; then
   eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
-  if [[ ! "$(pyenv which python)" == "/usr/bin/python" ]] ; then
-    pyenv virtualenvwrapper_lazy;
-  fi
 fi
