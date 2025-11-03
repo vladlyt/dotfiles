@@ -38,6 +38,7 @@ tasks:
       curl -sSf https://sh.rustup.rs | sh -s -- -y
       /home/user/.cargo/bin/cargo install starship --locked
       /home/user/.cargo/bin/cargo install lsd
+      /home/user/.cargo/bin/cargo install git-branchless --locked
       mkdir -p ~/.fzf && curl -L -o ~/.fzf/fzf-0.24.4.tar.gz https://github.com/junegunn/fzf/archive/refs/tags/0.24.4.tar.gz && tar -xzf ~/.fzf/fzf-0.24.4.tar.gz -C ~/.fzf --strip-components=1 && rm ~/.fzf/fzf-0.24.4.tar.gz
     when: on-create
 

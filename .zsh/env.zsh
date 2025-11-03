@@ -5,6 +5,8 @@ path=(
 
 path+=~/.local/bin
 
+path+=~/istio-1.27.1/bin
+
 # to fix locales in perl
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8

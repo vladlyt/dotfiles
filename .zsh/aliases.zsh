@@ -25,6 +25,7 @@ alias af="arc flow"
 
 alias k8s-seed-ops='bazel run //src/code.uber.internal/infra/compute/scripts/k8s-seed-ops:k8s-seed-ops --'
 alias mesh-gateway-ops='bazel run //src/code.uber.internal/swn/forward/bin/meshproxy-manager/scripts/ops:mesh-gateway-ops --'
+alias gatewayctl='bazel run //src/code.uber.internal/swn/forward/bin/meshproxy-manager/scripts/ops:mesh-gateway-ops --'
 
 typeset -A git_aliases
 git_aliases=(
