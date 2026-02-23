@@ -57,4 +57,5 @@ tasks:
       sudo chown $(id -u):$(id -g) ~/.npmrc
       npm config fix
       aifx agent install claude
+      curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh
     when: on-create,on-restart
