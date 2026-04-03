@@ -44,20 +44,18 @@ function iterm_tab_color() {
 alias tc='iterm_tab_color'
 
 
-claude_setup() {
-  gcloud auth application-default login;
-  gcloud auth application-default set-quota-project progsys-genai-198685;
-  export ANTHROPIC_VERTEX_PROJECT_ID="progsys-genai-198685";
-  export CLAUDE_CODE_USE_VERTEX=1;
-  export CLOUD_ML_REGION="us-east5";
+rtmux() {
+  local host="${1:?usage: rtmux host [session] [dir]}"
+  local session="${2:-main}"
+  local dir="${3:-}"
+  local remote_cmd=""
+  if [[ -n "$dir" ]]; then
+      remote_cmd="cd $(printf %q "$dir") && "
+  fi
+  remote_cmd="${remote_cmd}tmux new -A -s $(printf %q "$session")"
+
+  AUTOSSH_GATETIME=0 autossh -M 0 \
+      -o "ServerAliveInterval=30" \
+      -o "ServerAliveCountMax=3" \
+      -t "$host" "$remote_cmd"
 }
-
-# claude() {
-#   claude_setup;
-#   echo "claude_setup() complete. Unsetting the function to allow original 'claude' to run directly."
-#   unset -f claude
-
-#   # Now, call the original claude.
-#   # Since the function is unset, the shell will find the executable in PATH.
-#   claude "$@"
-# }

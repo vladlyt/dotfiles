@@ -9,23 +9,8 @@ alias less="less -R"
 
 alias fp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
-alias dp='ssh $USER.devpod-nld; tc $DEFAULT_COLOR'
-alias dpenvoy='ssh ltv-envoy-devpod.devpod-nld; tc $DEFAULT_COLOR'
-alias dpquick='ssh ltv-quick-changes.devpod-nld; tc $DEFAULT_COLOR'
-
-alias oc='object-config-client'
-
 alias minimal='export STARSHIP_CONFIG="$HOME/.config/starship-minimal.toml"'
 alias normal='export STARSHIP_CONFIG="$HOME/.config/starship-$CURRENT_MACHINE.toml"'
-
-alias adh="arc diff"
-alias adh="arc diff HEAD^"
-alias ac="arc cascade -hc"
-alias af="arc flow"
-
-alias k8s-seed-ops='bazel run //src/code.uber.internal/infra/compute/scripts/k8s-seed-ops:k8s-seed-ops --'
-alias mesh-gateway-ops='bazel run //src/code.uber.internal/swn/forward/bin/meshproxy-manager/scripts/ops:mesh-gateway-ops --'
-alias gatewayctl='bazel run //src/code.uber.internal/swn/forward/bin/meshproxy-manager/scripts/ops:gatewayctl --'
 
 typeset -A git_aliases
 git_aliases=(

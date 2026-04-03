@@ -5,8 +5,6 @@ path=(
 
 path+=~/.local/bin
 
-path+=~/istio-1.27.1/bin
-
 # to fix locales in perl
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
@@ -16,11 +14,6 @@ export FZF_DEFAULT_OPTS='--height 20% --border' # decorates fzf search window wi
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export HOMEBREW_NO_ENV_HINTS=1
-
-# Claude setup
-export ANTHROPIC_VERTEX_PROJECT_ID="progsys-genai-198685";
-export CLAUDE_CODE_USE_VERTEX=1;
-export CLOUD_ML_REGION="us-east5";
 
 if [[ -f ~/.machine ]]; then
     export CURRENT_MACHINE=$(<~/.machine)

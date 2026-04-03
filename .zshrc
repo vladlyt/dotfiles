@@ -45,6 +45,9 @@ source $ZSH_FOLDER/python.zsh
 source $ZSH_FOLDER/starship.zsh
 source $ZSH_FOLDER/aliases.zsh
 
+# source uber-specific config if present (provided by dotfiles-uber)
+for f in $ZSH_FOLDER/uber/*.zsh(N); do source $f; done
+
 # setup colors of prompt
 if [ "$CURRENT_MACHINE" = "prod" ]; then
     export DEFAULT_COLOR=#BF21CE
@@ -66,7 +69,3 @@ tc $DEFAULT_COLOR  # set iterm color
 eval "$(starship init zsh)"
 
 
-if [ "$USER_MACHINE_PREFIX" = "envoy" ]; then
-    export LLVM_CONFIG=/usr/local/llvm-my14/bin/llvm-config
-    export PATH="/usr/local/llvm-my14/bin:$PATH"
-fi
