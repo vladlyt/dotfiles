@@ -57,5 +57,6 @@ rtmux() {
   AUTOSSH_GATETIME=0 autossh -M 0 \
       -o "ServerAliveInterval=30" \
       -o "ServerAliveCountMax=3" \
+      -o "ExitOnForwardFailure=yes" \
       -t "$host" "$remote_cmd"
 }

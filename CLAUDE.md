@@ -29,7 +29,15 @@ Both repos use stow. On devpods, `dotfiles` is stowed first, then `dotfiles-uber
 - `.config/starship-{local,devpod,prod,minimal}.toml` — per-environment Starship prompt configs
 - `.config/kitty/kitty.conf` — kitty terminal config
 - `.vimrc` — vim config (spaces over tabs, 4-space indent, persistent undo, system clipboard)
-- `.tmux.conf` — tmux config (prefix `C-a`, vi keys, `|`/`-` splits, TPM plugins)
+- `.tmux.conf` — tmux config (prefix `C-a`, vi keys, `|`/`-` splits, machine-aware status bar, TPM plugins on local only)
+
+## Tmux
+
+Single `.tmux.conf` shared between local and devpod. Uses `~/.machine` for environment detection:
+- **Local**: blue status bar ("LOCAL"), TPM plugins loaded (resurrect, continuum for session persistence)
+- **Devpod**: red status bar ("DEVPOD"), no TPM (not installed there)
+
+The `rtmux` function (in `functions.zsh`) connects to remote tmux sessions via `autossh` with auto-reconnect. Used by devpod aliases in dotfiles-uber to maintain persistent sessions that survive SSH drops.
 
 ## Machine-Type Detection
 
