@@ -1,0 +1,7 @@
+^/\.claude$
+^/\.devpod$
+^/\.git$
+^/\.gitignore$
+^/\.stow-local-ignore$
+^/CLAUDE\.md$
+^/README.*$
