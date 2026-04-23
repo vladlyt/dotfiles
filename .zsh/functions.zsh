@@ -54,7 +54,11 @@ rtmux() {
   fi
   remote_cmd="${remote_cmd}tmux new -A -s $(printf %q "$session")"
 
+  # -a disables ssh-agent forwarding so the remote uses its OWN agent.
+  # Required for long-running tmux work: forwarded agent dies on disconnect,
+  # but a cert minted on the devpod via `ussh` survives laptop sleep / SSH drops.
   AUTOSSH_GATETIME=0 autossh -M 0 \
+      -a \
       -o "ServerAliveInterval=30" \
       -o "ServerAliveCountMax=3" \
       -o "ExitOnForwardFailure=yes" \
