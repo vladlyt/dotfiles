@@ -61,6 +61,6 @@ rtmux() {
       -a \
       -o "ServerAliveInterval=30" \
       -o "ServerAliveCountMax=3" \
-      -o "ExitOnForwardFailure=yes" \
+      -o "ExitOnForwardFailure=no" \
       -t "$host" "$remote_cmd"
 }
