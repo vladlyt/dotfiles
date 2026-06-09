@@ -54,13 +54,40 @@ rtmux() {
   fi
   remote_cmd="${remote_cmd}tmux new -A -s $(printf %q "$session")"
 
-  # -a disables ssh-agent forwarding so the remote uses its OWN agent.
-  # Required for long-running tmux work: forwarded agent dies on disconnect,
-  # but a cert minted on the devpod via `ussh` survives laptop sleep / SSH drops.
-  AUTOSSH_GATETIME=0 autossh -M 0 \
-      -a \
-      -o "ServerAliveInterval=30" \
-      -o "ServerAliveCountMax=3" \
-      -o "ExitOnForwardFailure=no" \
-      -t "$host" "$remote_cmd"
+  local delay=5 max_delay=300 max_retries=10 retries=0
+
+  trap 'return 0' INT
+
+  while true; do
+    local start=$SECONDS
+    # -a disables ssh-agent forwarding so the remote uses its OWN agent.
+    # Forwarded agent dies on disconnect; a cert minted on the devpod survives.
+    ssh -a \
+        -o "ControlMaster=no" \
+        -o "ServerAliveInterval=30" \
+        -o "ServerAliveCountMax=3" \
+        -o "ExitOnForwardFailure=no" \
+        -t "$host" "$remote_cmd"
+    local rc=$?
+
+    [[ $rc -eq 0 ]] && break
+
+    # Connection lasted > 60s — was a real session, reset backoff
+    if (( SECONDS - start > 60 )); then
+      delay=5
+      retries=0
+    else
+      (( retries++ ))
+    fi
+
+    if (( retries >= max_retries )); then
+      echo "rtmux: gave up after $max_retries consecutive failures" >&2
+      return 1
+    fi
+
+    echo "rtmux: reconnecting in ${delay}s (attempt $retries/$max_retries)..." >&2
+    sleep $delay
+    delay=$(( delay * 2 ))
+    (( delay > max_delay )) && delay=$max_delay
+  done
 }

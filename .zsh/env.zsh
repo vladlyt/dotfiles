@@ -4,6 +4,7 @@ path=(
 )
 
 path+=~/.local/bin
+path+=~/raycast/queue-agent
 
 # to fix locales in perl
 export LANG=en_US.UTF-8
