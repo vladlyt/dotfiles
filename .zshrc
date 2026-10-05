@@ -5,12 +5,12 @@ source $ZSH_FOLDER/setup.zsh
 # https://github.com/junegunn/fzf
 fzf_version_output=$(fzf --version)
 fzf_version=$(echo "$fzf_version_output" | grep -o '[0-9]*\.[0-9]*' | head -1)
-#if [[ $(echo "$fzf_version > 0.48" | bc) -eq 1 ]]; then
-#    source <(fzf --zsh)
-#else
+if [[ $(echo "$fzf_version > 0.48" | bc) -eq 1 ]]; then
+    source <(fzf --zsh)
+else
     source ~/.fzf/shell/completion.zsh
     source ~/.fzf/shell/key-bindings.zsh
-#fi
+fi
 
 # git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 source $ZSH_FOLDER/zsh-autosuggestions/zsh-autosuggestions.zsh
